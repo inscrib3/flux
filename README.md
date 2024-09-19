@@ -9,7 +9,7 @@ Further upgrades are not ruled out and may progressively be enhanced within this
 
 ## PLEASE NOTE
 
-There is no indexing or wallet for FLUX yet. You can deploy, mint from the official website: https://flux.inspip.com/
+Indexer: https://github.com/inscrib3/flux-indexer. You can deploy, mint, bridge, sell and buy from the official website: https://flux.inspip.com/
 
 ## General Rules
 
