@@ -18,8 +18,7 @@ There is no indexing or wallet for FLUX yet. You can deploy, mint from the offic
   - An OP_RETURN output, followed by the 'F' and function identifier (D, M, T) and its data
 - Tickers are base26 encoded
 - - base26 value encoding: A=1, AA=27, Z=26, BA=53
-  - ID = 0 semantically represents "No ID" (clients can leave out '0' and just render the ticker)
-  - The combination ticker:ID must be unique.
+  - Ticker must be unique.
 - All integers passed after OP_RETURN must be unsigned
 - All unsigned integers from 0 - 16 must be encoded as OP_0/OP_FALSE, OP_1/OP_TRUE to OP_16
 - Only 1 OP_RETURN is allowed per TX
@@ -39,7 +38,7 @@ OP_RETURN
 F
 D
 [BASE26 ENCODED TICKER]
-[ID]
+0
 [OUTPUT]
 [DECIMALS]
 [MAX]
@@ -53,8 +52,6 @@ Looking closer the values as follows:
 "D": shortcut for Deploy, signalling the following data is to define a new token.
 
 "[BASE26 ENCODED TICKER]": human readable ticker name, encoded as described in General Rules.
-
-"[ID]": the arbitray ID for the ticker from 0 - 999999 as unsigned integer. "0" semantically signals that there is no ID assigned (note that ticker:ID must be unique).
 
 "[OUTPUT]": the index as unsigned integer of the output containing the address/pubkey of the beneficiary
 
@@ -94,7 +91,7 @@ OP_RETURN
 F
 M
 [BASE26 ENCODED TICKER]
-[ID]
+0
 [OUTPUT]
 [MINT AMOUNT]
 ```
@@ -106,8 +103,6 @@ Values:
 "M": shortcut for Mint, signalling the following data is to mint tokens.
 
 "[BASE26 ENCODED TICKER]": human readable ticker name, encoded as described in General Rules.
-
-"[ID]": the arbitray ID for the ticker from 0 - 999999 as unsigned integer. "0" semantically signals that there is no ID assigned (note that ticker:ID must be unique).
 
 "[OUTPUT]": the index as unsigned integer of the output containing the address/pubkey of the beneficiary.
 
@@ -156,7 +151,7 @@ T
 ...begin quadruple
 [BASE26 ENCODED TICKER]
 [ID]
-[OUTPUT]
+0
 [TRANSFER AMOUNT]
 ...end quadruple
 ...next quadruple...
@@ -169,8 +164,6 @@ T
 Quadruple:
 
 "[BASE26 ENCODED TICKER]": human readable ticker name, encoded as described in General Rules.
-
-"[ID]": the arbitray ID for the ticker from 0 - 999999 as unsigned integer. "0" semantically signals that there is no ID assigned (note that ticker:ID must be unique).
 
 "[OUTPUT]": the index as unsigned integer of the output containing the address/pubkey of the beneficiary.
 
